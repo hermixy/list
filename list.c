@@ -1,16 +1,11 @@
 /*William Johnson
-**ECE223 MP2
-**This file sets up and stores
-**any data packets it might recieve
-**It is setup to be easily dropped in
-**to other systems with different data types
+ *
+ *A two-way linked list ADT along with some sorting features
 */
 #include <stdlib.h>
 #include <assert.h>
 #include <stdio.h>
-
-//#include "datatypes.h"   /* defines data_t */
-#include <list.h>        /* defines public functions for list ADT */
+#include "list.h"        /* defines public functions for list ADT */
 
 /* definitions for private constants used in list.c only */
 
@@ -77,17 +72,17 @@ list_t * list_construct(void)
 }
 
 /* Sets the pointer to the comparison function
- * Must be set non NULL before any sorting functions
+ * Must be set non NULL before any list or sorting functions
  * are used
 */
 void set_comp(list_t *list_ptr, comparer comp_proc)
 {
     if(list_ptr == NULL)
 	{
-		printf("List must be constructed\n"):
+		printf("List must be constructed\n");
 		return;
 	}
-	list_ptr->comp_proc = comp_proc;
+    list_ptr->comp_proc = comp_proc;
     assert(list_ptr->comp_proc != NULL);
 }
 
@@ -383,9 +378,12 @@ void * list_remove(list_t *list_ptr, list_node_t * idx_ptr)
     return data;
 }
 
-void list_sort(list_t *list_ptr, int sort_type)
+void list_sort(list_t *list_ptr)
 {
     
+    merge_sort(list_ptr);
+    
+    /* No longer supports selection of sorting algorithm instead defaults to merge sort
     if(sort_type == 1)
     {
         insert_sort(list_ptr);
@@ -402,6 +400,7 @@ void list_sort(list_t *list_ptr, int sort_type)
     {
         merge_sort(list_ptr);
     }
+    */
     list_ptr->list_sorted_state = SORTED_LIST;
     list_debug_validate(list_ptr);
 }

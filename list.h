@@ -2,8 +2,6 @@
  *
  * Public functions for two-way linked list
  *
- * You should not need to change any of the code this file.  If you do, you
- * must get permission from the instructor.
  */
 #ifndef _MYLIST_H_
 #define _MYLIST_H_
@@ -49,10 +47,9 @@ void list_insert(List list_ptr, void *elem_ptr, Iterator idx_ptr);
 void list_insert_sorted(List list_ptr, void *elem_ptr);
 
 void * list_remove(List list_ptr, Iterator idx_ptr);
-void list_sort(List , int);
+void list_sort(List);
 
 int list_size(List list_ptr);
-//int comp_proc(data_t *, data_t *);
 #endif
 
 /* commands for vim. ts: tabstop, sts: soft tabstop sw: shiftwidth */
